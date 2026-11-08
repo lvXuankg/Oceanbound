@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Nhật ký phát triển Oceanbound: tiến trình, việc cần làm và tài nguyên từ dự án game.">
+  <title>Oceanbound — Nhật ký hải trình</title>
+  <link rel="icon" href="images/compass.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/main.css">
+  <script defer src="data/project.js"></script>
+  <script defer src="data/journey.js"></script>
+  <script defer src="data/tasks.js"></script>
+  <script defer src="data/assets.js"></script>
+  <script defer src="scripts/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đến nội dung</a>
+  <header class="site-header">
+    <a class="brand" href="#"><img src="images/compass.svg" width="32" height="32" alt=""><span>OCEANBOUND<span class="brand-sub">DEVELOPMENT LOG</span></span></a>
+    <nav aria-label="Điều hướng chính"><a href="#journey">Hải trình</a><a href="#tasks">Công việc</a><a href="#assets">Tài nguyên</a></nav>
+    <span class="header-note"><i></i> Bản ghi cục bộ</span>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="short-line"></span> NHẬT KÝ PHÁT TRIỂN / <span id="snapshot-date">—</span></p>
+        <h1 id="hero-title">Từng bước nhỏ.<br>Một <em>hải trình</em> dài.</h1>
+        <p class="hero-description" id="project-description"></p>
+        <div class="hero-actions"><a class="button primary" href="#tasks">Xem tiến trình <span aria-hidden="true">↗</span></a><a class="text-link" href="#assets">Khám phá tài nguyên <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-meta"><span id="engine-label"></span><span id="phase-label"></span></div>
+      </div>
+      <div class="chart" role="img" aria-label="Minh họa bản đồ hải trình với thuyền buồm và đường đi qua các đảo; không phải ảnh trong game">
+        <div class="chart-grid"></div><span class="chart-coordinate top">OCEANBOUND / CHART 001</span><span class="chart-north">N<br>↑</span>
+        <svg class="sea-map" viewBox="0 0 600 430" aria-hidden="true">
+          <defs><radialGradient id="island"><stop stop-color="#286456"/><stop offset="1" stop-color="#153d3c"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="3"/></filter></defs>
+          <g fill="none" stroke="#31565b" stroke-width="1"><path d="M-40 360C100 230 170 430 330 300S540 250 650 100"/><path d="M-20 380C100 250 170 450 340 320S560 270 650 120"/><path d="M-60 340C100 210 160 410 320 280S520 230 650 80"/><path d="M20 40C170 150 210 20 400 60S530 170 660 130"/><path d="M20 60C170 170 210 40 400 80S530 190 660 150"/></g>
+          <g fill="url(#island)" stroke="#4f8470"><path d="M96 295Q65 263 93 246T142 228Q183 234 174 266T139 302Z"/><path d="M393 124Q378 101 395 85T434 73Q470 72 479 99T454 140Q417 155 393 124Z"/><path d="M461 329Q448 309 470 297T508 302L527 323Q515 347 493 350Z"/></g>
+          <g fill="none" stroke="#507969" opacity=".65"><path d="M84 307Q47 260 83 232T145 215Q200 225 189 271T139 315Z"/><path d="M382 136Q358 98 387 72T437 60Q488 57 493 100T455 155Q416 170 382 136Z"/></g>
+          <path d="M141 254C194 255 196 138 285 186S345 259 405 178L433 112" fill="none" stroke="#7be0c0" stroke-width="2" stroke-dasharray="5 9"/>
+          <circle cx="141" cy="254" r="7" fill="#82e5bf"/><circle cx="141" cy="254" r="15" fill="none" stroke="#82e5bf" opacity=".35"/>
+          <circle cx="433" cy="112" r="5" fill="#0c2429" stroke="#71908e" stroke-width="2"/>
+          <g transform="translate(290 190) rotate(15)"><circle r="38" fill="#7be0c0" opacity=".06"/><path d="M-19 17H22L12 28H-10Z" fill="#e4d6b8"/><path d="M0-30V14H-22Z" fill="#e4eadd"/><path d="M5-18L22 11H5Z" fill="#76c8b5"/><path d="M1-33V18" stroke="#e4eadd" stroke-width="2"/></g>
+          <g fill="#809d9e" font-family="monospace" font-size="10" letter-spacing="2"><text x="83" y="340">KHỞI HÀNH</text><text x="402" y="185">CHẶNG TIẾP</text></g>
+        </svg>
+        <span class="map-label">— <span>Chờ bổ sung nội dung</span></span><span class="chart-coordinate bottom">MINH HỌA HẢI TRÌNH · KHÔNG PHẢI GAMEPLAY</span>
+      </div>
+    </section>
+    <section class="snapshot-strip" aria-label="Tóm tắt bản ghi"><div><span class="metric" id="done-count">—</span><span>hạng mục đã có</span></div><div><span class="metric" id="planned-count">—</span><span>hạng mục chờ làm</span></div><div><span class="metric" id="asset-count">—</span><span>nhóm tài nguyên</span></div><p id="scope-note"></p></section>
+    <section class="section" id="journey" aria-labelledby="journey-title"><div class="section-heading"><div><p class="eyebrow">01 / THE JOURNEY</p><h2 id="journey-title">Từ nền móng đến chuyến ra khơi.</h2></div><span class="section-note">Các chặng phát triển</span></div><ol class="journey" id="journey-list"></ol><p class="source-note" id="journey-empty">Chưa bổ sung chặng phát triển.</p></section>
+    <section class="section" id="tasks" aria-labelledby="tasks-title"><div class="section-heading"><div><p class="eyebrow">02 / WORK IN PROGRESS</p><h2 id="tasks-title">Mỗi việc xong, tiến thêm một chút.</h2></div><span class="count-label" id="task-summary"></span></div>
+      <div class="toolbar"><div class="filters" role="group" aria-label="Lọc trạng thái"><button type="button" class="filter active" data-status="all" aria-pressed="true">Tất cả</button><button type="button" class="filter" data-status="done" aria-pressed="false">Đã có</button><button type="button" class="filter" data-status="active" aria-pressed="false">Đang làm</button><button type="button" class="filter" data-status="planned" aria-pressed="false">Chờ làm</button><button type="button" class="filter" data-status="blocked" aria-pressed="false">Bị chặn</button></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Tìm công việc, tài nguyên…" aria-label="Tìm công việc và tài nguyên"><kbd>/</kbd></label></div>
+      <div class="task-list" id="task-list" aria-live="polite"></div>
+      <div class="checklist-progress"><span id="checklist-caption"></span><progress id="checklist-progress" value="0" max="1" aria-label="Hạng mục hoàn thành trong checklist"></progress></div>
+    </section>
+    <section class="section" id="assets" aria-labelledby="assets-title"><div class="section-heading"><div><p class="eyebrow">03 / THE COLLECTION</p><h2 id="assets-title">Những gì đã có trong hành trang.</h2></div><span class="section-note">Bản sao từ game chính ↗</span></div><div class="asset-grid" id="asset-grid" aria-live="polite"></div></section>
+    <section class="workflow-section" aria-labelledby="workflow-title"><div><p class="eyebrow">GIỮ HẢI TRÌNH LIỀN MẠCH</p><h2 id="workflow-title">Làm trong game.<br>Ghi lại ở đây.</h2><p>Một bản trưng bày có nguồn, đủ ngữ cảnh để tiếp tục công việc ở lần sau.</p></div><ol class="workflow"><li><span>01</span><div><h3>Chọn bằng chứng</h3><p>File nguồn, ảnh hoặc tài nguyên đã có trong game.</p></div></li><li><span>02</span><div><h3>Copy & ghi ngữ cảnh</h3><p>Lưu bản sao, đường dẫn nguồn và mô tả thay đổi.</p></div></li><li><span>03</span><div><h3>Cập nhật bản ghi</h3><p>Chỉnh dữ liệu công việc, hải trình và tài nguyên.</p></div></li><li><span>04</span><div><h3>Kiểm tra & trình bày</h3><p>Xác nhận bằng chứng; thiếu thông tin thì quay lại bước 1.</p></div></li></ol></section>
+    <p id="load-error" class="load-error" hidden>Không tải đủ dữ liệu. Kiểm tra các file trong data/ rồi tải lại trang.</p>
+    <noscript><p class="load-error">Bật JavaScript để đọc các file dữ liệu cục bộ và hiển thị tiến trình.</p></noscript>
+  </main>
+  <footer><a class="brand footer-brand" href="#">OCEANBOUND <span> / PROGRESS SHOW</span></a><span id="footer-date"></span><a href="README.md">Hướng dẫn cập nhật ↗</a></footer>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><button type="button" class="close-dialog" aria-label="Đóng chi tiết">×</button><p class="eyebrow" id="detail-category"></p><h2 id="detail-title"></h2><p id="detail-description"></p><div id="detail-content"></div></dialog>
+</body>
+</html>

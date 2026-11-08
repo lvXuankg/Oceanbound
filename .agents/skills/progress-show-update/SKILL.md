@@ -9,7 +9,7 @@ Mục tiêu: duy trì bản trưng bày có nguồn, chỉnh được qua dữ l
 
 ## Đọc đúng context
 
-Tìm root repo Oceanbound từ thư mục chứa skill; đọc `Progress_show/README.md`, `Progress_show/data/FORMAT.md`, bốn file `data/*.js` và `context/manifest.json`. Đọc thêm `context/project-knowledge.md` khi cần hiểu trạng thái hoặc luồng giải thích hiện tại.
+Tìm root repo Oceanbound từ workspace có `Game/` và `Progress_show/`; không dựa vào số cấp thư mục chứa skill. Đọc `Progress_show/README.md`, `Progress_show/data/FORMAT.md`, các file `project.js`, `journey.js`, `tasks.js`, `assets.js` trong `Progress_show/data/` và `Progress_show/context/manifest.json`. Đọc thêm `Progress_show/context/project-knowledge.md` khi cần hiểu trạng thái hoặc luồng giải thích hiện tại. Các đường dẫn `data/`, `context/`, `images/` và `main.html` bên dưới tính từ `Progress_show/`; các lệnh Python chạy từ root repo.
 
 Đối chiếu file trong `Game/` liên quan đến thay đổi. Không quét Library, Temp, Logs hoặc package cache để suy ra tiến trình game. Bản sao cũ chỉ chứng minh trạng thái tại lần ghi nhận đó.
 

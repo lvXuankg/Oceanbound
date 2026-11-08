@@ -8,6 +8,8 @@ Nơi này dùng để **show tiến trình và tài nguyên đã làm của Ocea
 
 Mở `Progress_show/main.html` bằng trình duyệt. Trang hoạt động trực tiếp, không cần npm, kết nối mạng, CDN hoặc build.
 
+Tài liệu thiết kế nằm ở [design.html](design.html), mở từ mục **Tài liệu** trên thanh điều hướng. Có đủ các chương 01–14 và cây mục con theo ảnh mục lục bạn cung cấp. Tiêu đề dài xuống dòng đầy đủ. Mục 01 đã có tổng quan ý tưởng và nguồn YouTube; các mục còn lại chờ bổ sung trong `data/design.js` theo [định dạng dữ liệu](data/FORMAT.md#bổ-sung-tài-liệu-thiết-kế).
+
 Nếu muốn xem qua HTTP, chạy từ root repo:
 
 ```powershell
@@ -30,7 +32,7 @@ Mở [bản xem cục bộ](http://127.0.0.1:8080/main.html). Nhấn `Ctrl+C` �
 ```text
 Progress_show/
 ├── README.md
-├── HUONG_DAN_SKILLS.md             # Cách dùng hai skill và mẫu câu lệnh
+├── HUONG_DAN_SKILLS.md             # Cách gọi skill bằng $ và mẫu câu lệnh
 ├── AGENTS.md                      # Chỉ dẫn context cho agent làm trong thư mục
 ├── main.html                      # Khung trình bày
 ├── styles/main.css                # Giao diện responsive
@@ -49,9 +51,12 @@ Progress_show/
 │   ├── project-knowledge.md        # Hiện trạng, nguồn, giới hạn và luồng
 │   ├── manifest.json              # Nguồn → bản sao → SHA-256
 │   └── game/                      # Sẽ được tạo khi bạn chọn file từ Game/ để copy
-└── skills/
-    ├── project-infographic/       # Skill pull từ repo được yêu cầu
-    └── progress-show-update/      # Skill tạo/cập nhật nội dung cho trang
+└── design.html                   # Tài liệu thiết kế game
+
+../.agents/skills/                 # Skill cấp project, Codex tự nhận diện
+├── project-infographic/
+├── progress-show-update/
+└── oceanbound-design-update/
 ```
 
 ## Chỉnh nội dung mà không chỉnh HTML
@@ -71,18 +76,21 @@ python Progress_show/scripts/validate.py --compare-source
 
 `validate.py` kiểm tra các file dữ liệu, ID/liên kết, đường dẫn, bằng chứng cho trạng thái done và hash bản sao. `--compare-source` còn đối chiếu với game hiện tại; bỏ cờ này khi chỉ muốn kiểm tra một snapshot lịch sử.
 
-## Hai skill đi kèm
+## Skill trong project
 
-Đọc [Hướng dẫn sử dụng hai skill](HUONG_DAN_SKILLS.md) để chọn đúng skill, chuẩn bị đầu vào, dùng các mẫu câu lệnh và kiểm tra kết quả.
+Đọc [Hướng dẫn sử dụng skill](HUONG_DAN_SKILLS.md) để chọn đúng skill, chuẩn bị đầu vào, dùng các mẫu câu lệnh và kiểm tra kết quả.
 
-1. [project-infographic](skills/project-infographic/SKILL.md), pull từ [grahama1970/agent-stack-public](https://github.com/grahama1970/agent-stack-public/blob/main/skills/project-infographic/SKILL.md), giữ nguyên skill và các reference của upstream. Commit và hash được ghi trong [context/skill-source.json](context/skill-source.json). Dùng để tạo luồng diễn giải/infographic có nguồn, brief và quy tắc cập nhật. Các skill khác được upstream nhắc tới không đồng nghĩa đã được cài.
-2. [progress-show-update](skills/progress-show-update/SKILL.md), dùng context trong repo để tạo/cập nhật các file dữ liệu nhập vào `main.html`, bổ sung tài nguyên và kiểm tra tính nhất quán.
+1. [project-infographic](../.agents/skills/project-infographic/SKILL.md), pull từ [grahama1970/agent-stack-public](https://github.com/grahama1970/agent-stack-public/blob/main/skills/project-infographic/SKILL.md); giữ nội dung hướng dẫn và các reference, chuyển metadata phụ vào trường `metadata` để đúng định dạng skill. Commit và hash upstream được ghi trong [context/skill-source.json](context/skill-source.json). Dùng để tạo luồng diễn giải/infographic có nguồn, brief và quy tắc cập nhật. Các skill khác được upstream nhắc tới không đồng nghĩa đã được cài.
+2. [progress-show-update](../.agents/skills/progress-show-update/SKILL.md), dùng context trong repo để tạo/cập nhật các file dữ liệu nhập vào `main.html`, bổ sung tài nguyên và kiểm tra tính nhất quán.
+3. [oceanbound-design-update](../.agents/skills/oceanbound-design-update/SKILL.md), bổ sung/chỉnh sửa GDD qua `data/design.js` và `design.html`.
 
-Các skill được đóng gói **trong thư mục này**, chưa cài vào kho skill toàn cục. `AGENTS.md` chỉ đường dẫn để agent làm trong thư mục đọc đúng skill. Có thể dùng ngay bằng lời nhắc:
+Các skill nằm trong **`.agents/skills/` ở root repo** để Codex nhận diện ở cấp project; chưa cài toàn cục. Gõ `$` và chọn skill theo tên. Nếu danh sách chưa cập nhật, mở lại Codex. Có thể dùng ngay bằng lời nhắc:
 
-> Đọc Progress_show/skills/progress-show-update/SKILL.md và chỉ cập nhật nội dung, trạng thái, nguồn tôi cung cấp sau đây: [nội dung].
+> $progress-show-update — Chỉ cập nhật nội dung, trạng thái, nguồn tôi cung cấp sau đây: [nội dung].
 
-> Đọc Progress_show/skills/project-infographic/SKILL.md và context/project-knowledge.md để tạo infographic diễn giải quy trình cập nhật bản show.
+> $project-infographic — Đọc Progress_show/context/project-knowledge.md để tạo infographic diễn giải quy trình cập nhật bản show.
+
+> $oceanbound-design-update — Bổ sung vào mục 01. Tổng quan / Ý tưởng: [nội dung].
 
 ## Tham khảo thiết kế
 

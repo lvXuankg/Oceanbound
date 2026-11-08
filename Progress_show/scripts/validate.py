@@ -2,6 +2,7 @@
 from pathlib import Path
 from hashlib import sha256
 from datetime import date
+from urllib.parse import urlsplit
 import json
 import re
 import sys
@@ -82,10 +83,33 @@ def validate():
         for entry in asset["files"]:
             require(copies.get(entry["source"]) == entry["copy"], f"Asset/manifest mismatch: {entry['source']}")
             local_file(entry["copy"])
-    html = local_file("main.html").read_text(encoding="utf-8")
-    for relative in re.findall(r'(?:src|href)="([^"#]+)"', html):
-        local_file(relative)
-    print(f"OK: {len(tasks)} tasks, {len(journey)} stages, {len(assets)} asset groups, {len(copies)} verified copies.")
+    design = read_data("design")
+    require(isinstance(design, list), "design must be an array")
+    design_ids = set()
+    for section in design:
+        key = section.get("id", "")
+        require(isinstance(key, str) and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key), "Invalid design ID")
+        require(key not in design_ids, f"Duplicate design ID: {key}")
+        # Parents precede their children, so a cycle cannot be introduced.
+        require(section.get("parent") is None or section["parent"] in design_ids, f"Unknown or unordered design parent: {key}")
+        design_ids.add(key)
+        require(isinstance(section.get("number"), str), f"Missing design.number: {key}")
+        require(isinstance(section.get("title"), str) and section["title"].strip(), f"Missing design.title: {key}")
+        require(isinstance(section.get("content"), list) and all(isinstance(p, str) and p.strip() for p in section["content"]), f"Invalid design.content: {key}")
+        sources = section.get("sources", [])
+        require(isinstance(sources, list), f"Invalid design.sources: {key}")
+        for source in sources:
+            require(isinstance(source, dict), f"Invalid design source: {key}")
+            require(isinstance(source.get("label"), str) and source["label"].strip(), f"Missing source label: {key}")
+            url = source.get("url")
+            require(isinstance(url, str) and not re.search(r"[\s\\\x00-\x1f\x7f]", url), f"Invalid source URL: {key}")
+            parsed = urlsplit(url)
+            require(parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password, f"Source must be an HTTPS URL without credentials: {key}")
+    for page in ("main.html", "design.html"):
+        html = local_file(page).read_text(encoding="utf-8")
+        for relative in re.findall(r'(?:src|href)="([^"#]+)"', html):
+            local_file(relative)
+    print(f"OK: {len(tasks)} tasks, {len(journey)} stages, {len(assets)} asset groups, {len(design)} document sections, {len(copies)} verified copies.")
 
 
 if __name__ == "__main__":

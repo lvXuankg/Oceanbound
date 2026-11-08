@@ -3,34 +3,55 @@
   "files": [
     {
       "path": "skills/project-infographic/SKILL.md",
-      "sha": "24ca8a5a6c3ee550d0a46e11cc11d30e56927d3c"
+      "sha": "24ca8a5a6c3ee550d0a46e11cc11d30e56927d3c",
+      "installedPath": ".agents/skills/project-infographic/SKILL.md",
+      "installedSha256": "67ba964791f458c72bf470ca3631b0998987269eb0146f3c572e3bbab6e6352d"
     },
     {
       "path": "skills/project-infographic/references/dashboard-theater-antipatterns.md",
-      "sha": "6c0767e42bcce72f081edf3780b419bba3e002db"
+      "sha": "6c0767e42bcce72f081edf3780b419bba3e002db",
+      "installedPath": ".agents/skills/project-infographic/references/dashboard-theater-antipatterns.md",
+      "installedSha256": "92d8028c3c83975d3262d70e7f3dd4b0b6c895bf8854a0f53aea652d6619043d"
     },
     {
       "path": "skills/project-infographic/references/design-brief-template.md",
-      "sha": "d3c99fe3ae80f4e37354e43d19ee7e30726c8f4b"
+      "sha": "d3c99fe3ae80f4e37354e43d19ee7e30726c8f4b",
+      "installedPath": ".agents/skills/project-infographic/references/design-brief-template.md",
+      "installedSha256": "f52aae2865e30299aa8f57a87edb663e9b445121b53351f6af14c6f8486e9895"
     },
     {
       "path": "skills/project-infographic/references/good-infographic-patterns.md",
-      "sha": "98f9711a2372e9a1169fd534a2e29b526eb6a90e"
+      "sha": "98f9711a2372e9a1169fd534a2e29b526eb6a90e",
+      "installedPath": ".agents/skills/project-infographic/references/good-infographic-patterns.md",
+      "installedSha256": "1891827f6270ed3ef8d43ea7afb034da049bb4da83349170523af99bc7be4f33"
     },
     {
       "path": "skills/project-infographic/references/html-svg-reconstruction-rules.md",
-      "sha": "59e92feb9b4b0db851d1ee23ca90891d312179fa"
+      "sha": "59e92feb9b4b0db851d1ee23ca90891d312179fa",
+      "installedPath": ".agents/skills/project-infographic/references/html-svg-reconstruction-rules.md",
+      "installedSha256": "712380a36f8e32c180063f8cae5fdcbc4708dc098ecda2c01bef2f79a86cdf84"
     },
     {
       "path": "skills/project-infographic/references/review/style-lock-image-prompt-payload.md",
-      "sha": "2e32eea1eea802161f79d7cc26f63b7d63e32f3a"
+      "sha": "2e32eea1eea802161f79d7cc26f63b7d63e32f3a",
+      "installedPath": ".agents/skills/project-infographic/references/review/style-lock-image-prompt-payload.md",
+      "installedSha256": "a8876d8da7584f33410e12b6d778875160489d99d0fdb8e1c0ddc8e65be2c651"
     },
     {
       "path": "skills/project-infographic/references/style-lock-image-prompt-template.md",
-      "sha": "44ac38426c62346bf67faf1027a382f5a4160942"
+      "sha": "44ac38426c62346bf67faf1027a382f5a4160942",
+      "installedPath": ".agents/skills/project-infographic/references/style-lock-image-prompt-template.md",
+      "installedSha256": "fb1fea6ca5f5f9e74963921b7b719d38e93eaf6e863551474eab45eb9799d9fc"
     }
   ],
   "fetchedOn": "2026-11-08",
   "repo": "https://github.com/grahama1970/agent-stack-public",
-  "commit": "dab9d154116cbdbd8c1087725fb1b925660a9873"
+  "commit": "dab9d154116cbdbd8c1087725fb1b925660a9873",
+  "installedPath": ".agents/skills/project-infographic",
+  "installedPathBase": "repository-root",
+  "localAdaptations": [
+    "Moved all skill files from Progress_show/skills into .agents/skills for project discovery.",
+    "Moved upstream routing fields into string-valued metadata; preserved the instruction body and reference files."
+  ],
+  "shaNote": "The sha fields identify original upstream Git blobs; installedSha256 hashes identify current local files."
 }

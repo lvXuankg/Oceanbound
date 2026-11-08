@@ -5,33 +5,12 @@ description: >
   a user asks for a project chart, architecture infographic, visual system map,
   generated diagram image, image spec, or an updateable visual contract for a
   project.
-triggers:
-  - project infographic
-  - architecture infographic
-  - create a project chart
-  - create an image diagram
-  - image spec for a chart
-  - updateable visual contract
-  - generated systems chart
-provides:
-  - infographic-spec
-  - generated-diagram
-  - visual-contract
-  - project-architecture-map
-composes:
-  - project-knowledge
-  - create-image
-  - create-figure
-  - review-design
-  - surf
-  - agentic-evals
-taxonomy:
-  - design
-  - validation
-  - coordination
-disciplines:
-  - content-creation
-  - ui-design-engineering
+metadata:
+  triggers: "project infographic; architecture infographic; create a project chart; create an image diagram; image spec for a chart; updateable visual contract; generated systems chart"
+  provides: "infographic-spec; generated-diagram; visual-contract; project-architecture-map"
+  composes: "project-knowledge; create-image; create-figure; review-design; surf; agentic-evals"
+  taxonomy: "design; validation; coordination"
+  disciplines: "content-creation; ui-design-engineering"
 ---
 
 # Project Infographic

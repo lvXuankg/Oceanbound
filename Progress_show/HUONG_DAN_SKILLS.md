@@ -1,6 +1,6 @@
-# Hướng dẫn sử dụng hai skill
+# Hướng dẫn sử dụng skill trong project
 
-Tài liệu này hướng dẫn cách yêu cầu AI sử dụng hai skill đi kèm `Progress_show/`. Các mẫu câu lệnh dưới đây chỉ là hướng dẫn; chúng không tự thêm dữ liệu vào trang.
+Tài liệu này hướng dẫn cách gọi các skill trong `.agents/skills/` ở root repo Oceanbound. Các mẫu câu lệnh dưới đây chỉ là hướng dẫn; chúng không tự thêm dữ liệu vào trang.
 
 **Bản show hiện để trống.** Chỉ bổ sung nội dung, nguồn và trạng thái do bạn cung cấp hoặc chọn để đối chiếu. Không tự tạo tiến trình, todo hay roadmap từ cấu trúc game.
 
@@ -8,15 +8,16 @@ Tài liệu này hướng dẫn cách yêu cầu AI sử dụng hai skill đi k�
 
 | Bạn muốn làm gì? | Skill sử dụng | Kết quả |
 | --- | --- | --- |
-| Giải thích một quá trình: đầu vào, từng bước xử lý, kết quả và nhánh lỗi | [project-infographic](skills/project-infographic/SKILL.md) | Brief và infographic HTML/CSS/SVG có thể chỉnh sửa |
-| Thêm hoặc sửa công việc, trạng thái, chặng và tài nguyên trên trang | [progress-show-update](skills/progress-show-update/SKILL.md) | Cập nhật các file `data/` và context liên quan |
+| Giải thích một quá trình: đầu vào, từng bước xử lý, kết quả và nhánh lỗi | [project-infographic](../.agents/skills/project-infographic/SKILL.md) | Brief và infographic HTML/CSS/SVG có thể chỉnh sửa |
+| Thêm hoặc sửa công việc, trạng thái, chặng và tài nguyên trên trang | [progress-show-update](../.agents/skills/progress-show-update/SKILL.md) | Cập nhật các file `data/` và context liên quan |
+| Bổ sung ý tưởng, cơ chế và nội dung GDD | [oceanbound-design-update](../.agents/skills/oceanbound-design-update/SKILL.md) | Cập nhật `data/design.js` cho `design.html` |
 | Vừa giải thích luồng, vừa cập nhật bản show | Dùng cả hai, với cùng nguồn và phạm vi | Infographic và dữ liệu trình bày nhất quán |
 
 `project-infographic` tập trung diễn giải cơ chế hoặc quy trình. `progress-show-update` đưa thông tin đã được xác định vào trang tiến trình. Chỉ cập nhật một task thì dùng skill thứ hai là đủ.
 
 ## 2. Cách gọi skill trong repo này
 
-Hai skill đang được lưu cục bộ trong `Progress_show/skills/`. Bạn có thể yêu cầu AI đọc đúng file `SKILL.md` bằng đường dẫn; không cần cài thêm để sử dụng theo cách này.
+Ba skill được lưu trong `.agents/skills/` để Codex tự nhận diện ở cấp project. Gõ `$` rồi chọn `project-infographic`, `progress-show-update` hoặc `oceanbound-design-update`. Nếu skill mới chưa xuất hiện, mở lại Codex. Vẫn có thể yêu cầu AI đọc `SKILL.md` bằng đường dẫn từ root repo.
 
 Mở chat với workspace Oceanbound rồi gửi một trong các mẫu bên dưới. Thay các phần trong dấu `[...]` bằng thông tin của bạn. Các đường dẫn trong mẫu tính từ root repo Oceanbound.
 
@@ -29,7 +30,7 @@ Cung cấp quá trình cần giải thích, người xem và nguồn được ph
 ### Mẫu tạo mới
 
 ```text
-Đọc và áp dụng Progress_show/skills/project-infographic/SKILL.md.
+$project-infographic
 
 Tạo infographic giải thích: [tên quá trình].
 Người xem: [đối tượng].
@@ -48,7 +49,7 @@ Chỉ tạo infographic, giữ nguyên dữ liệu tiến trình và khung main.
 ### Mẫu cập nhật luồng đã có
 
 ```text
-Đọc Progress_show/skills/project-infographic/SKILL.md.
+$project-infographic
 Cập nhật infographic tại [đường dẫn HTML và brief/spec hiện có].
 Thay đổi lần này: [mô tả].
 Nguồn xác nhận: [file hoặc nội dung mới].
@@ -83,7 +84,7 @@ Cung cấp tên nội dung, mô tả thực tế, trạng thái và nguồn đư
 ### Mẫu thêm nội dung
 
 ```text
-Đọc và áp dụng Progress_show/skills/progress-show-update/SKILL.md.
+$progress-show-update
 
 Chỉ bổ sung nội dung sau vào bản show:
 - Tên công việc/tài nguyên: [tên].
@@ -104,7 +105,7 @@ Với việc `planned`, bằng chứng có thể chưa có. Với `done`, cần 
 ### Mẫu sửa nội dung đã có
 
 ```text
-Đọc Progress_show/skills/progress-show-update/SKILL.md.
+$progress-show-update
 Sửa mục có ID [ID] trong [tasks.js / journey.js / assets.js].
 Thay đổi: [mô tả hoặc trạng thái mới].
 Nguồn xác nhận: [đường dẫn hoặc thông tin bổ sung].
@@ -129,9 +130,7 @@ Giữ ID và các nội dung ngoài phạm vi; cập nhật liên kết/context 
 Nếu bạn đã có luồng cần giải thích và nội dung cần show, có thể gửi:
 
 ```text
-Đọc hai skill trong Progress_show/skills/:
-- project-infographic/SKILL.md
-- progress-show-update/SKILL.md
+$project-infographic $progress-show-update
 
 Chỉ dùng nội dung và nguồn sau: [nội dung/đường dẫn].
 1. Tạo hoặc cập nhật luồng diễn giải [tên luồng].
@@ -155,3 +154,13 @@ python Progress_show/scripts/validate.py
 Để đối chiếu bản sao với nguồn game hiện tại, dùng thêm `--compare-source`. Khi cần copy nguồn mới, chọn đường dẫn trong `SOURCES` của `scripts/snapshot.py` rồi chạy script; danh sách nguồn hiện để trống và sẽ không tự chọn file.
 
 Mở `main.html`, tải lại trang và kiểm tra các mục vừa bổ sung. Nếu không thấy nội dung, xóa từ khóa tìm kiếm và chọn bộ lọc **Tất cả**. Lỗi dữ liệu, đường dẫn hoặc liên kết ID được kiểm tra theo [data/FORMAT.md](data/FORMAT.md); đổi bố cục infographic cần kiểm tra thêm nhãn và mũi tên trong trình duyệt.
+
+## 7. Bổ sung tài liệu thiết kế
+
+```text
+$oceanbound-design-update
+Bổ sung vào [số hoặc tên mục]:
+[nội dung và nguồn tham khảo của bạn]
+```
+
+Skill này cập nhật GDD tại `design.html` qua `data/design.js`. Nội dung thiết kế và nền tảng dự kiến không phải bằng chứng tính năng đã chạy. Các skill trong project vẫn nằm trong repo này, không được cài cho các project khác.
